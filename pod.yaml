@@ -1,0 +1,11 @@
+# pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: color-server
+spec:
+  containers:
+    - name: color-server
+      image: color-server
+      ports:
+        - containerPort: 3000
