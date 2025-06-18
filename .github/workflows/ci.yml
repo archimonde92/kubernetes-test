@@ -56,3 +56,4 @@ jobs:
           tags: |
             archimonde13/color-server:${{ steps.get_version.outputs.version }}
             archimonde13/color-server:latest
+          platforms: linux/amd64,linux/arm64
