@@ -6,6 +6,8 @@
   "scripts": {
     "build": "rm -rf dist && tsc",
     "start": "node dist/index.js",
+    "kube-remove": "kubectl delete pod color-server --force",
+    "kube-apply": "kubectl apply -f pod.yaml",
     "deploy": "docker-compose -f docker-compose.yml up --build -d"
   },
   "keywords": [],

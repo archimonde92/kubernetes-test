@@ -7,7 +7,6 @@ const COLOR = process.env.COLOR || 'WHITE';
 const randomInstanceId = Math.random().toString(36).substring(2, 15);
 const instanceId = randomInstanceId
 
-
 app.get('/', (_req, res) => {
   res.send(`
     <html>
@@ -32,6 +31,7 @@ app.get('/', (_req, res) => {
       <body>
         <h1>Color: ${COLOR}</h1>
         <p>Instance ID: ${instanceId}</p>
+        <p>Version: ${"1.0.4"}</p>
       </body>
     </html>
   `);

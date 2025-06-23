@@ -6,7 +6,7 @@ metadata:
 spec:
   containers:
     - name: color-server
-      image: kubernetes-test-color-server
+      image: archimonde13/color-server:1.0.3
       ports:
         - containerPort: 3000
       envFrom:

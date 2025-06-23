@@ -1,0 +1,15 @@
+image:
+  repository: archimonde13/color-server
+  tag: 1.0.3
+
+service:
+  type: NodePort
+  ports:
+    colorServer: 3000
+  nodePort: 30001
+resources:
+  limits:
+    memory: 1Gi
+
+secret:
+  name: color-server-secret

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-service
+spec:
+  selector:
+    # Must match the pod's labels (add this label to your pod if missing)
+    app: {{ .Release.Name }}
+  ports:
+    - protocol: TCP
+      port: {{ .Values.service.ports.colorServer }}         # Service port
+      targetPort: {{ .Values.service.ports.colorServer }}   # Pod containerPort
+      nodePort: {{ .Values.service.nodePort }}    # Optional: external port (between 30000-32767)
+  type: {{ .Values.service.type }}
