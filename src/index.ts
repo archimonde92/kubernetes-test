@@ -31,7 +31,7 @@ app.get('/', (_req, res) => {
       <body>
         <h1>Color: ${COLOR}</h1>
         <p>Instance ID: ${instanceId}</p>
-        <p>Version: ${"1.1.3"}</p>
+        <p>Version: ${"1.1.4"}</p>
       </body>
     </html>
   `);
