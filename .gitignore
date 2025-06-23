@@ -109,3 +109,4 @@ dist/
 
 test/
 examples/
+helm/values.yaml

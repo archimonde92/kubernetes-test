@@ -11,6 +11,8 @@ spec:
     metadata:
       labels:
         app: {{ .Release.Name }}
+      annotations:
+        checksum/env-secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
     spec:
       containers:
         - name: color-server
@@ -19,7 +21,7 @@ spec:
             - containerPort: {{ .Values.service.ports.colorServer }}
           envFrom:
             - secretRef:
-                name: {{ .Values.secret.name }}
+                name: {{ .Release.Name }}-secret
           resources:
             limits:
               memory: {{ .Values.resources.limits.memory }}
