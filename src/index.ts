@@ -37,6 +37,11 @@ app.get('/', (_req, res) => {
   `);
 });
 
+app.get('/kill', (_req, res) => {
+  res.send('Killing server...');
+  process.exit(0);
+});
+
 app.listen(PORT, () => {
   console.log(`Server started on http://localhost:${PORT}`);
 });
