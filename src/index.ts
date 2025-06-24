@@ -36,7 +36,7 @@ app.get('/', (_req, res) => {
       <body>
         <h1>Color: ${COLOR}</h1>
         <p>Instance ID: ${instanceId}</p>
-        <p>Version: ${"1.3.0"}</p>
+        <p>Version: ${"1.3.1"}</p>
         <p>Uptime: ${getLiveTimeSeconds()} seconds</p>
       </body>
     </html>
@@ -46,7 +46,7 @@ app.get('/', (_req, res) => {
 app.get('/kill', (_req, res) => {
   if(getLiveTimeSeconds() > 10) {
     res.send('Killing server...');
-    process.exit(0);
+    process.exit(1);
   } else {
     res.send('Server is not ready to be killed');
   }
