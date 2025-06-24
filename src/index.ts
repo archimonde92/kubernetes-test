@@ -6,6 +6,11 @@ const PORT = process.env.PORT || 3000;
 const COLOR = process.env.COLOR || 'WHITE';
 const randomInstanceId = Math.random().toString(36).substring(2, 15);
 const instanceId = randomInstanceId
+const startTime = new Date();
+
+const getLiveTimeSeconds = () => {
+  return Math.floor((new Date().getTime() - startTime.getTime()) / 1000);
+}
 
 app.get('/', (_req, res) => {
   res.send(`
@@ -31,15 +36,36 @@ app.get('/', (_req, res) => {
       <body>
         <h1>Color: ${COLOR}</h1>
         <p>Instance ID: ${instanceId}</p>
-        <p>Version: ${"1.2.0"}</p>
+        <p>Version: ${"1.3.0"}</p>
+        <p>Uptime: ${getLiveTimeSeconds()} seconds</p>
       </body>
     </html>
   `);
 });
 
 app.get('/kill', (_req, res) => {
-  res.send('Killing server...');
-  process.exit(0);
+  if(getLiveTimeSeconds() > 10) {
+    res.send('Killing server...');
+    process.exit(0);
+  } else {
+    res.send('Server is not ready to be killed');
+  }
+});
+
+app.get('/ready', (_req, res) => {
+  if(getLiveTimeSeconds() > 10) {
+    res.status(200).send('Server is ready');
+  } else {
+    res.status(503).send('Server is not ready');
+  }
+});
+
+app.get('/health', (_req, res) => {
+  if(getLiveTimeSeconds() > 10 && getLiveTimeSeconds() < 120) {
+    res.status(200).send('Server is healthy');
+  } else {
+    res.status(503).send('Server is not healthy');
+  }
 });
 
 app.listen(PORT, () => {
